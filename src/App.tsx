@@ -6,6 +6,7 @@ import GameGrid from "./components/GameGrid";
 function App() {
   return (
     <>
+      Testing
       <Grid
         templateAreas={{
           base: `"nav" "main"`,
