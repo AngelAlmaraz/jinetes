@@ -6,7 +6,7 @@ import GameGrid from "./components/GameGrid";
 function App() {
   return (
     <>
-      Yes?
+      maybe
       <Grid
         templateAreas={{
           base: `"nav" "main"`,
