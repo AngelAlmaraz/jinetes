@@ -14,7 +14,7 @@ const NavBar = () => {
 
   return (
     <>
-      <HStack>
+      <HStack justifyContent="space-between" padding="10px">
         <Image
           src={themeDark === true ? logoDark : logoLight}
           boxSize="60px"

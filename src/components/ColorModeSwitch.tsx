@@ -11,6 +11,7 @@ const ColorModeSwitch = ({ onToggleSwitch }: Props) => {
   return (
     <HStack>
       <Switch
+        colorScheme="purple" // <- color uSafe (opcional)
         isChecked={colorMode === "dark"}
         onChange={() => {
           toggleColorMode();
