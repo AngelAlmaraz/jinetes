@@ -10,9 +10,9 @@ const GameCard = ({ game }: Props) => {
   return (
     <>
       <Card borderRadius={10} overflow="hidden">
-        <Image src={game.background_image} />
+        <Image src={game.url} />
         <CardBody>
-          <Heading fontSize="2xl">{game.name}</Heading>
+          <Heading fontSize="2x1">{game.name}</Heading>
         </CardBody>
       </Card>
     </>
