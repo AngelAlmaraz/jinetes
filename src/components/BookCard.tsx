@@ -18,7 +18,7 @@ interface Props {
 const BookCard = ({ book }: Props) => {
   return (
     <>
-      <Card width={320} borderRadius={10} overflow="hidden">
+      <Card width={300} borderRadius={10} overflow="hidden">
         <Image height={500} src={book.url} />
         <CardBody>
           <Heading fontSize="xl">{book.name}</Heading>
