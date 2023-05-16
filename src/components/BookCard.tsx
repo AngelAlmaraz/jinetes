@@ -1,6 +1,15 @@
 import React from "react";
 import { Book } from "../hooks/useBooks";
-import { Card, CardBody, Heading, Image } from "@chakra-ui/react";
+import {
+  Badge,
+  Card,
+  CardBody,
+  CardFooter,
+  HStack,
+  Heading,
+  Image,
+  Text,
+} from "@chakra-ui/react";
 
 interface Props {
   book: Book;
@@ -9,11 +18,19 @@ interface Props {
 const BookCard = ({ book }: Props) => {
   return (
     <>
-      <Card borderRadius={10} overflow="hidden">
-        <Image src={book.url} />
+      <Card width={320} borderRadius={10} overflow="hidden">
+        <Image height={500} src={book.url} />
         <CardBody>
-          <Heading fontSize="2x1">{book.name}</Heading>
+          <Heading fontSize="xl">{book.name}</Heading>
         </CardBody>
+        <CardFooter paddingTop={0}>
+          <HStack flex="1" justifyContent="space-between">
+            <Text color="gray.400">{book.author}</Text>
+            <Badge fontSize={14} paddingX={2} borderRadius={4}>
+              ${book.price}
+            </Badge>
+          </HStack>
+        </CardFooter>
       </Card>
     </>
   );
