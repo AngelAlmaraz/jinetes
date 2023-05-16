@@ -8,7 +8,7 @@ import {
 
 const BookCardSkelleton = () => {
   return (
-    <Card width={300} borderRadius={10}>
+    <Card>
       <Skeleton height={500} />
       <CardBody>
         <SkeletonText />
