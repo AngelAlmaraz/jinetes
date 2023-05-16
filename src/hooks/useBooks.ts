@@ -2,27 +2,27 @@ import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 
-export interface Game {
+export interface Book {
     id: number;
     name: string;
     url: string
   }
   
-  interface FetchGamesResponse {
+  interface FetchBooksResponse {
     count: number;
-    results: Game[];
+    results: Book[];
   }
   
 
-const useGames = () => {
-    const [games, setGames] = useState<Game[]>([]);
+const useBooks = () => {
+    const [books, setBooks] = useState<Book[]>([]);
     const [error, setError] = useState("");
   
     useEffect(() => {
         const controller = new AbortController();
       apiClient
-        .get<FetchGamesResponse>("/books")
-        .then((res) => setGames(res.data.results) )
+        .get<FetchBooksResponse>("/books")
+        .then((res) => setBooks(res.data.results) )
         .catch((err) => {
             if (err instanceof CanceledError) return;
             setError(err.message);
@@ -32,10 +32,10 @@ const useGames = () => {
       
     }, []);
 
-    // console.log(games)
+    // console.log(books)
 
-    return {games, error}
+    return {books, error}
   
 };
 
-export default useGames;
+export default useBooks;

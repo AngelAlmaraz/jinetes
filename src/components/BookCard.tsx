@@ -1,22 +1,22 @@
 import React from "react";
-import { Game } from "../hooks/useGames";
+import { Book } from "../hooks/useBooks";
 import { Card, CardBody, Heading, Image } from "@chakra-ui/react";
 
 interface Props {
-  game: Game;
+  book: Book;
 }
 
-const GameCard = ({ game }: Props) => {
+const BookCard = ({ book }: Props) => {
   return (
     <>
       <Card borderRadius={10} overflow="hidden">
-        <Image src={game.url} />
+        <Image src={book.url} />
         <CardBody>
-          <Heading fontSize="2x1">{game.name}</Heading>
+          <Heading fontSize="2x1">{book.name}</Heading>
         </CardBody>
       </Card>
     </>
   );
 };
 
-export default GameCard;
+export default BookCard;
