@@ -19,8 +19,27 @@ const BookCard = ({ book }: Props) => {
   return (
     <>
       <Card>
-        <Image height={500} src={book.url} />
-        <CardBody height={88} flex={1}>
+        <div
+          style={{
+            width: "100%",
+            paddingBottom: "156.25%",
+            position: "relative",
+          }}
+        >
+          <Image
+            src={book.url}
+            alt={book.name}
+            style={{
+              position: "absolute",
+              top: "0",
+              left: "0",
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
+        </div>
+        <CardBody>
           <Heading fontSize="xl">{book.name}</Heading>
         </CardBody>
         <CardFooter paddingTop={0}>

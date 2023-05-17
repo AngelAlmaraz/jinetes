@@ -18,13 +18,13 @@ const BookGrid = () => {
       >
         {isLoading &&
           skeletons.map((skeleton) => (
-            <BookCardContainer>
-              <BookCardSkelleton key={skeleton} />
+            <BookCardContainer key={skeleton}>
+              <BookCardSkelleton />
             </BookCardContainer>
           ))}
         {data.map((book) => (
-          <BookCardContainer>
-            <BookCard key={book.id} book={book}></BookCard>
+          <BookCardContainer key={book.id}>
+            <BookCard book={book}></BookCard>
           </BookCardContainer>
         ))}
       </SimpleGrid>
