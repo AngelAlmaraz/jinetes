@@ -13,9 +13,6 @@ const BookCardSkelleton = () => {
       <CardBody>
         <SkeletonText />
       </CardBody>
-      <CardFooter>
-        <SkeletonText />
-      </CardFooter>
     </Card>
   );
 };

@@ -40,7 +40,7 @@ const BookCard = ({ book }: Props) => {
           />
         </div>
         <CardBody>
-          <Heading fontSize="xl">{book.name}</Heading>
+          <Heading fontSize="xl">{book.name.substring(0, 35)}</Heading>
         </CardBody>
         <CardFooter paddingTop={0}>
           <HStack flex="1" justifyContent="space-between">

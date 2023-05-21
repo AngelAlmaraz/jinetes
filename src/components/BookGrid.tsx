@@ -3,9 +3,14 @@ import useBooks from "../hooks/useBooks";
 import BookCard from "./BookCard";
 import BookCardSkelleton from "./BookCardSkelleton";
 import BookCardContainer from "./BookCardContainer";
+import { Genre } from "../hooks/useGenres";
 
-const BookGrid = () => {
-  const { data, error, isLoading } = useBooks();
+interface Props {
+  selectedGenre: Genre | null;
+}
+
+const BookGrid = ({ selectedGenre }: Props) => {
+  const { data, error, isLoading } = useBooks(selectedGenre);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (
