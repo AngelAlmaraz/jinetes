@@ -1,5 +1,5 @@
+import { BookQuery } from "../App";
 import useData from "./useData";
-import { Genre } from "./useGenres";
 
 export interface Book {
     id: number;
@@ -10,6 +10,14 @@ export interface Book {
   }
   
 
-const useBooks = (selectedGenre: Genre | null) => useData<Book>('/books2', {params: {genre:selectedGenre?.name}}, [selectedGenre?.name]);
+const useBooks = (bookQuery: BookQuery) => 
+  useData<Book>(
+    '/books2',
+    {
+      params: {
+        genre:bookQuery.genre?.name
+      }
+    },
+     [bookQuery]);
 
 export default useBooks;

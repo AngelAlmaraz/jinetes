@@ -6,8 +6,13 @@ import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
 
+export interface BookQuery {
+  genre: Genre | null;
+}
+
 function App() {
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [bookQuery, setBookQuery] = useState<BookQuery>({} as BookQuery);
+
   return (
     <>
       <Grid
@@ -20,19 +25,19 @@ function App() {
           lg: "200px 1fr",
         }}
       >
-        <GridItem area="nav">
+        <GridItem area="nav" backgroundColor="red">
           <NavBar />
         </GridItem>
         <Show above="lg">
           <GridItem area="aside" paddingX={5}>
             <GenreList
-              selectedGenre={selectedGenre}
-              onSelectGenre={(genre) => setSelectedGenre(genre)}
+              selectedGenre={bookQuery.genre}
+              onSelectGenre={(genre) => setBookQuery({ ...bookQuery, genre })}
             />
           </GridItem>
         </Show>
         <GridItem area="main">
-          <BookGrid selectedGenre={selectedGenre} />
+          <BookGrid bookQuery={bookQuery} />
         </GridItem>
       </Grid>
     </>
