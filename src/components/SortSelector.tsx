@@ -18,7 +18,6 @@ const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
     (order) => order.value === sortOrder
   );
 
-  console.log(currentSortOrder);
   return (
     <>
       <Menu>

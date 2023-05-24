@@ -3,6 +3,7 @@ import logoDark from "../assets/white.webp";
 import logoLight from "../assets/black.webp";
 import ColorModeSwitch from "./ColorModeSwitch";
 import { useState } from "react";
+import SearchInput from "./SearchInput";
 
 const NavBar = () => {
   const [themeDark, setThemeDark] = useState(true);
@@ -13,11 +14,12 @@ const NavBar = () => {
 
   return (
     <>
-      <HStack justifyContent="space-between" padding="10px">
+      <HStack padding="10px">
         <Image
           src={themeDark === true ? logoDark : logoLight}
           boxSize="60px"
         ></Image>
+        <SearchInput />
         <ColorModeSwitch onToggleSwitch={toggleTheme} />
       </HStack>
     </>
