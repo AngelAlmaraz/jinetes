@@ -6,6 +6,8 @@ import BookCardContainer from "./BookCardContainer";
 import { BookQuery } from "../App";
 import dog1 from "../assets/chiwi.webp";
 import dog2 from "../assets/manena.webp";
+import dog3 from "../assets/rocky.webp";
+import dog4 from "../assets/peka.webp";
 
 interface Props {
   bookQuery: BookQuery;
@@ -14,6 +16,8 @@ interface Props {
 const dogs = [
   { image: dog1, name: "Chiwinki" },
   { image: dog2, name: "Manena" },
+  { image: dog3, name: "Rocky" },
+  { image: dog4, name: "Peka" },
 ];
 
 function getRandomDog(): { image: string; name: string } {
