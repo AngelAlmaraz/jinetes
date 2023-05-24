@@ -1,13 +1,15 @@
-import { Button, ButtonGroup, Grid, GridItem, Show } from "@chakra-ui/react";
+import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import BookGrid from "./components/BookGrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
+import SortSelector from "./components/SortSelector";
 
 export interface BookQuery {
   genre: Genre | null;
+  sortOrder: string;
 }
 
 function App() {
@@ -25,7 +27,7 @@ function App() {
           lg: "200px 1fr",
         }}
       >
-        <GridItem area="nav" backgroundColor="red">
+        <GridItem area="nav" backgroundColor="#171c26">
           <NavBar />
         </GridItem>
         <Show above="lg">
@@ -36,7 +38,15 @@ function App() {
             />
           </GridItem>
         </Show>
-        <GridItem area="main">
+        <GridItem paddingY={5} area="main">
+          <HStack paddingLeft={10}>
+            <SortSelector
+              sortOrder={bookQuery.sortOrder}
+              onSelectSortOrder={(sortOrder) =>
+                setBookQuery({ ...bookQuery, sortOrder })
+              }
+            />
+          </HStack>
           <BookGrid bookQuery={bookQuery} />
         </GridItem>
       </Grid>

@@ -15,7 +15,8 @@ const useBooks = (bookQuery: BookQuery) =>
     '/books2',
     {
       params: {
-        genre:bookQuery.genre?.name
+        genre:bookQuery.genre?.name,
+        sortBy:bookQuery.sortOrder
       }
     },
      [bookQuery]);
