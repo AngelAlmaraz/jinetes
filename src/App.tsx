@@ -15,11 +15,6 @@ export interface BookQuery {
 
 function App() {
   const [bookQuery, setBookQuery] = useState<BookQuery>({} as BookQuery);
-  const [themeDark, setThemeDark] = useState(true);
-
-  const toggleTheme = () => {
-    setThemeDark(!themeDark);
-  };
 
   return (
     <>
@@ -33,12 +28,8 @@ function App() {
           lg: "200px 1fr",
         }}
       >
-        <GridItem
-          area="nav"
-          backgroundColor={themeDark ? "#e8e8e8" : "#171c26"}
-        >
+        <GridItem area="nav" backgroundColor="#171c26">
           <NavBar
-            onToggleSwitch={toggleTheme}
             onSearch={(searchText) =>
               setBookQuery({ ...bookQuery, searchText })
             }

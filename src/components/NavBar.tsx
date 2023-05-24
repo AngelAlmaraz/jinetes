@@ -7,10 +7,9 @@ import SearchInput from "./SearchInput";
 
 interface Props {
   onSearch: (searchText: string) => void;
-  onToggleSwitch: () => void;
 }
 
-const NavBar = ({ onSearch, onToggleSwitch }: Props) => {
+const NavBar = ({ onSearch }: Props) => {
   const [themeDark, setThemeDark] = useState(true);
 
   const toggleTheme = () => {
@@ -25,11 +24,7 @@ const NavBar = ({ onSearch, onToggleSwitch }: Props) => {
           boxSize="60px"
         ></Image>
         <SearchInput onSearch={onSearch} />
-        <ColorModeSwitch
-          onToggleSwitch={() => {
-            toggleTheme(), onToggleSwitch();
-          }}
-        />
+        <ColorModeSwitch onToggleSwitch={toggleTheme} />
       </HStack>
     </>
   );
