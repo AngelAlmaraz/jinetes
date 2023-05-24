@@ -29,7 +29,7 @@ function App() {
           lg: "200px 1fr",
         }}
       >
-        <GridItem area="nav" backgroundColor="#171c26">
+        <GridItem area="nav">
           <NavBar
             onSearch={(searchText) =>
               setBookQuery({ ...bookQuery, searchText })
@@ -37,7 +37,7 @@ function App() {
           />
         </GridItem>
         <Show above="lg">
-          <GridItem area="aside" paddingX={5} paddingY={10}>
+          <GridItem area="aside" paddingX={5} paddingY={5}>
             <GenreList
               selectedGenre={bookQuery.genre}
               onSelectGenre={(genre) => setBookQuery({ ...bookQuery, genre })}

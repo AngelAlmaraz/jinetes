@@ -1,10 +1,10 @@
-import { Box, Image, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Heading, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import useBooks from "../hooks/useBooks";
 import BookCard from "./BookCard";
 import BookCardSkelleton from "./BookCardSkelleton";
 import BookCardContainer from "./BookCardContainer";
 import { BookQuery } from "../App";
-import logoDark from "../assets/white.webp";
+import dog from "../assets/chiwi.webp";
 
 interface Props {
   bookQuery: BookQuery;
@@ -17,12 +17,24 @@ const BookGrid = ({ bookQuery }: Props) => {
   return (
     <>
       {!isLoading && data.length === 0 && (
-        <Box width="100%" paddingY={20} marginX="45%">
-          <Text fontSize="2xl" fontWeight="bold">
-            No results found.
-          </Text>
-          <Image paddingY={5} src={logoDark}></Image>
-        </Box>
+        <>
+          <Box width="100%" marginX="37%">
+            <Heading>No results found.</Heading>
+            <Text marginX="5%">Meet the Jinetes Dogs</Text>
+          </Box>
+          <Box width="100%" marginX="35%">
+            <Image
+              width={400}
+              paddingX={-5}
+              paddingY={5}
+              src={dog}
+              alt="chiwinki"
+            ></Image>
+          </Box>
+          <Box width="100%" marginX="42%">
+            <Heading>Chiwinki!</Heading>
+          </Box>
+        </>
       )}
       {error && <Text>{error}</Text>}
       <SimpleGrid

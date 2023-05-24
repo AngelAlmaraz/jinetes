@@ -1,4 +1,11 @@
-import { Button, List, ListItem, Spinner, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Heading,
+  List,
+  ListItem,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
 
 interface Props {
@@ -12,22 +19,31 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
   if (error) return <></>;
   if (isLoading) return <Spinner />;
   return (
-    <List>
-      {data.map((genre) => (
-        <ListItem key={Math.random()} paddingY={5}>
-          <Button
-            onClick={() => {
-              selectedGenre != genre ? onSelectGenre(genre) : null;
-            }}
-            fontWeight={genre.name === selectedGenre?.name ? "bold" : "normal"}
-            fontSize="lg"
-            variant="link"
-          >
-            {genre.name}
-          </Button>
-        </ListItem>
-      ))}
-    </List>
+    <>
+      <Heading paddingBottom={5} fontSize="2xl">
+        Genres
+      </Heading>
+      <List>
+        {data.map((genre) => (
+          <ListItem key={Math.random()} paddingY={5}>
+            <Button
+              onClick={() => {
+                selectedGenre != genre ? onSelectGenre(genre) : null;
+              }}
+              whiteSpace="normal"
+              textAlign="left"
+              fontWeight={
+                genre.name === selectedGenre?.name ? "bold" : "normal"
+              }
+              fontSize="lg"
+              variant="link"
+            >
+              {genre.name}
+            </Button>
+          </ListItem>
+        ))}
+      </List>
+    </>
   );
 };
 
