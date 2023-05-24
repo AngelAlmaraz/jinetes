@@ -4,15 +4,28 @@ import BookCard from "./BookCard";
 import BookCardSkelleton from "./BookCardSkelleton";
 import BookCardContainer from "./BookCardContainer";
 import { BookQuery } from "../App";
-import dog from "../assets/chiwi.webp";
+import dog1 from "../assets/chiwi.webp";
+import dog2 from "../assets/manena.webp";
 
 interface Props {
   bookQuery: BookQuery;
 }
 
+const dogs = [
+  { image: dog1, name: "Chiwinki" },
+  { image: dog2, name: "Manena" },
+];
+
+function getRandomDog(): { image: string; name: string } {
+  const randomIndex = Math.floor(Math.random() * dogs.length);
+  return dogs[randomIndex];
+}
+
 const BookGrid = ({ bookQuery }: Props) => {
   const { data, error, isLoading } = useBooks(bookQuery);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  const randomDog = getRandomDog();
 
   return (
     <>
@@ -27,12 +40,12 @@ const BookGrid = ({ bookQuery }: Props) => {
               width={400}
               paddingX={-5}
               paddingY={5}
-              src={dog}
-              alt="chiwinki"
+              src={randomDog.image}
+              alt={randomDog.name}
             ></Image>
           </Box>
           <Box width="100%" marginX="42%">
-            <Heading>Chiwinki!</Heading>
+            <Heading>{randomDog.name}!</Heading>
           </Box>
         </>
       )}
