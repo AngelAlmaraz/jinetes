@@ -6,6 +6,7 @@ import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
 import SortSelector from "./components/SortSelector";
+import BookHeading from "./components/BookHeading";
 
 export interface BookQuery {
   genre: Genre | null;
@@ -44,6 +45,7 @@ function App() {
           </GridItem>
         </Show>
         <GridItem paddingY={5} area="main">
+          <BookHeading bookQuery={bookQuery} />
           <Flex paddingLeft={10}>
             <SortSelector
               sortOrder={bookQuery.sortOrder}

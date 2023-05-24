@@ -17,7 +17,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
         <ListItem key={Math.random()} paddingY={5}>
           <Button
             onClick={() => {
-              onSelectGenre(genre);
+              selectedGenre != genre ? onSelectGenre(genre) : null;
             }}
             fontWeight={genre.name === selectedGenre?.name ? "bold" : "normal"}
             fontSize="lg"
