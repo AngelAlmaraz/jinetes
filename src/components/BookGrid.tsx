@@ -8,6 +8,15 @@ import dog1 from "../assets/chiwi.webp";
 import dog2 from "../assets/manena.webp";
 import dog3 from "../assets/rocky.webp";
 import dog4 from "../assets/peka.webp";
+import dog5 from "../assets/loki.webp";
+import dog6 from "../assets/topo.webp";
+import dog7 from "../assets/paka.webp";
+import dog8 from "../assets/lulu.webp";
+import dog9 from "../assets/luna.webp";
+import dog10 from "../assets/tiki.webp";
+import dog11 from "../assets/moroyorqui.webp";
+import dog12 from "../assets/chiwi2.webp";
+import dog13 from "../assets/osunauzer.webp";
 
 interface Props {
   bookQuery: BookQuery;
@@ -18,6 +27,15 @@ const dogs = [
   { image: dog2, name: "Manena" },
   { image: dog3, name: "Rocky" },
   { image: dog4, name: "Peka" },
+  { image: dog5, name: "Loki" },
+  { image: dog6, name: "Topo" },
+  { image: dog7, name: "Paka" },
+  { image: dog8, name: "Lulu" },
+  { image: dog9, name: "Luna" },
+  { image: dog10, name: "Tiki" },
+  { image: dog11, name: "Moroyorkie" },
+  { image: dog12, name: "Chiwinki" },
+  { image: dog13, name: "Osunauzer" },
 ];
 
 function getRandomDog(): { image: string; name: string } {
