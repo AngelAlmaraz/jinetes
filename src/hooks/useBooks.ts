@@ -1,5 +1,7 @@
+import { useQuery } from "@tanstack/react-query";
 import { BookQuery } from "../App";
-import useData from "./useData";
+import apiClient from '../services/api-client';
+import { FetchResponse } from "./useData";
 
 export interface Book {
     id: number;
@@ -11,15 +13,16 @@ export interface Book {
   
 
 const useBooks = (bookQuery: BookQuery) => 
-  useData<Book>(
-    '/books2',
-    {
+  useQuery<FetchResponse<Book>, Error>({
+    queryKey: ['books', bookQuery],
+    queryFn: () => apiClient.get<FetchResponse<Book>>('/books2', {
       params: {
         genre:bookQuery.genre?.name,
         search:bookQuery.searchText,
         sortBy:bookQuery.sortOrder
-      }
-    },
-     [bookQuery]);
+      },
+    })
+    .then(res => res.data)
+  })
 
 export default useBooks;

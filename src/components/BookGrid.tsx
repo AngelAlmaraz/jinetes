@@ -51,7 +51,7 @@ const BookGrid = ({ bookQuery }: Props) => {
 
   return (
     <>
-      {!isLoading && data.length === 0 && (
+      {!isLoading && data?.results.length === 0 && (
         <>
           <Box width="100%" marginX="37%">
             <Heading>No results found.</Heading>
@@ -71,7 +71,7 @@ const BookGrid = ({ bookQuery }: Props) => {
           </Box>
         </>
       )}
-      {error && <Text>{error}</Text>}
+      {error && <Text>{error.message}</Text>}
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
         padding={10}
@@ -83,7 +83,7 @@ const BookGrid = ({ bookQuery }: Props) => {
               <BookCardSkelleton />
             </BookCardContainer>
           ))}
-        {data.map((book) => (
+        {data?.results.map((book) => (
           <BookCardContainer key={book.id}>
             <BookCard book={book}></BookCard>
           </BookCardContainer>
