@@ -52,7 +52,7 @@ const BookDetailPage = () => {
         <GridItem area="main" paddingTop={5} paddingX={5}>
           <Heading>{book.name}</Heading>
           <Text paddingTop={10}>{book.description}</Text>
-          <Button marginTop={10}>Add to kart</Button>
+          <Button marginTop={10}>Add to cart</Button>
         </GridItem>
       </Grid>
     </>

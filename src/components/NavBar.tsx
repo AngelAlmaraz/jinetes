@@ -1,10 +1,9 @@
 import { Box, Button, HStack, Image } from "@chakra-ui/react";
 import { useState } from "react";
 import { BsCartFill } from "react-icons/bs";
+import { FaUserAlt } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import logoLight from "../assets/black.webp";
-import userDark from "../assets/userDark.webp";
-import userLight from "../assets/userLight.webp";
 import logoDark from "../assets/white.webp";
 import { getUser, resetUserSession } from "../services/auth";
 import useBookQueryStore from "../store";
@@ -64,11 +63,11 @@ const NavBar = () => {
             <BsCartFill size={35} onClick={kartHandler} />
           </Button>
         )}
-        <Image
-          src={themeDark === true ? userDark : userLight}
-          boxSize="40px"
-          onClick={handleUserClick}
-        ></Image>
+
+        <Button variant="link">
+          <FaUserAlt size={30} onClick={handleUserClick} />
+        </Button>
+
         <ColorModeSwitch onToggleSwitch={toggleTheme} />
       </HStack>
       {logInDiv && (
