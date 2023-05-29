@@ -8,6 +8,7 @@ export interface FetchResponse<T> {
 const axiosInstance = axios.create({
     baseURL: "https://4nxi7wtmf2.execute-api.us-east-1.amazonaws.com/dev",
   });
+
   
   axiosInstance.interceptors.response.use(
     (response) => response,
@@ -28,6 +29,15 @@ const axiosInstance = axios.create({
       return axiosInstance
       .get<FetchResponse<T>>(this.endpoint, config)
       .then(res => res.data);
+    }
+
+    get = (id: string) => {
+      return axiosInstance
+      .get<T>(this.endpoint + '?id=' + id)
+      .then(res => {
+        console.log(res.data); // Imprimir res.data en la consola
+        return res.data;
+      });
     }
   }
   

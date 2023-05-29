@@ -10,6 +10,7 @@ export interface Book {
     url: string
     author:string
     price: number
+    description:string
   }
   
 
