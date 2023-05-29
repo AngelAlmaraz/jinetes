@@ -17,6 +17,7 @@ const NavBar = () => {
   const [logoutDiv, setLogoutDiv] = useState(false);
   const user = getUser();
   const username = user !== undefined && user ? user.username:'';
+  const navigate = useNavigate();
 
   const toggleTheme = () => {
     setThemeDark(!themeDark);
@@ -35,6 +36,14 @@ const NavBar = () => {
     setLogoutDiv(!logoutDiv);
     resetUserSession();
   }
+  const kartHandler = () => {
+    if (user) {
+      console.log('/kart');
+    }
+    else {
+      navigate('/signin');
+    }
+  }
   return (
     <>
       <HStack padding="10px">
@@ -45,10 +54,11 @@ const NavBar = () => {
           ></Image>
         </Link>
         <SearchInput />
-        {getUser() && <Image
+        <Image
             src={themeDark === true ? kartDark : kartLight}
             boxSize="60px"
-        ></Image>}
+            onClick={kartHandler}
+        ></Image>
           <Image
               src={themeDark === true ? userDark : userLight}
               boxSize="50px"
@@ -57,16 +67,16 @@ const NavBar = () => {
         <ColorModeSwitch onToggleSwitch={toggleTheme} />
       </HStack>
       {logInDiv && (
-          <Box bg="gray.200" w="40" h="20" ml="87%" textAlign="center">
+          <Box bg="gray.200" w="40" h="20" ml="85%" textAlign="center">
             <Link to={'/signin'}>
-              <button style={{background:"#0C1326", padding:"5px",marginTop:"10%", width:"60%",height:"50%"}} onClick={handleUserClick}>Sign In</button>
+              <button style={{background:"#0C1326", padding:"5px",marginTop:"5%", width:"70%",height:"50%"}} onClick={handleUserClick}>Sign In</button>
             </Link>
           </Box>
       )}
       {logoutDiv && (
-          <Box bg="gray.200" w="40" h="20" ml="87%" textAlign="center">
+          <Box bg="gray.200" w="200px" h="120px" ml="85%" textAlign="center">
             <Link to={'/'}>
-              <button style={{background:"#0C1326", padding:"5px",marginTop:"10%", width:"60%",height:"50%"}} onClick={logoutHandler}>Sign Out</button>
+              <button style={{background:"#0C1326", padding:"5px",marginTop:"5%", width:"70%",height:"50%"}} onClick={logoutHandler}>Sign Out</button>
               <p style={{color:"black", padding:"2px"}}>Signed in as: {username}</p>
             </Link>
           </Box>
