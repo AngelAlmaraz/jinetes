@@ -34,10 +34,8 @@ const axiosInstance = axios.create({
     get = (id: string) => {
       return axiosInstance
       .get<T>(this.endpoint + '?id=' + id)
-      .then(res => {
-        console.log(res.data); // Imprimir res.data en la consola
-        return res.data;
-      });
+      .then(res => res.data
+      );
     }
   }
   
