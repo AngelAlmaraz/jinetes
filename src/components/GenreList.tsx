@@ -19,7 +19,9 @@ const GenreList = () => {
           <ListItem key={Math.random()} paddingY={5}>
             <Button
               onClick={() => {
-                selectedGenre != genre ? setSelectedGenre(genre) : null;
+                selectedGenre != genre
+                  ? setSelectedGenre(genre)
+                  : setSelectedGenre(null);
               }}
               whiteSpace="normal"
               textAlign="left"
