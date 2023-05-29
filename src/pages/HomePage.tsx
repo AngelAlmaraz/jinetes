@@ -3,8 +3,12 @@ import BookGrid from "../components/BookGrid";
 import BookHeading from "../components/BookHeading";
 import GenreList from "../components/GenreList";
 import SortSelector from "../components/SortSelector";
+import { getUser } from "../services/auth";
 
 const HomePage = () => {
+  const user = getUser();
+
+  console.log(user);
   return (
     <>
       <Grid
