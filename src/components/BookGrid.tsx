@@ -1,26 +1,21 @@
 import { Box, Heading, Image, SimpleGrid, Text } from "@chakra-ui/react";
-import useBooks from "../hooks/useBooks";
-import BookCard from "./BookCard";
-import BookCardSkelleton from "./BookCardSkelleton";
-import BookCardContainer from "./BookCardContainer";
-import { BookQuery } from "../App";
 import dog1 from "../assets/chiwi.webp";
-import dog2 from "../assets/manena.webp";
-import dog3 from "../assets/rocky.webp";
-import dog4 from "../assets/peka.webp";
+import dog12 from "../assets/chiwi2.webp";
 import dog5 from "../assets/loki.webp";
-import dog6 from "../assets/topo.webp";
-import dog7 from "../assets/paka.webp";
 import dog8 from "../assets/lulu.webp";
 import dog9 from "../assets/luna.webp";
-import dog10 from "../assets/tiki.webp";
+import dog2 from "../assets/manena.webp";
 import dog11 from "../assets/moroyorqui.webp";
-import dog12 from "../assets/chiwi2.webp";
 import dog13 from "../assets/osunauzer.webp";
-
-interface Props {
-  bookQuery: BookQuery;
-}
+import dog7 from "../assets/paka.webp";
+import dog4 from "../assets/peka.webp";
+import dog3 from "../assets/rocky.webp";
+import dog10 from "../assets/tiki.webp";
+import dog6 from "../assets/topo.webp";
+import useBooks from "../hooks/useBooks";
+import BookCard from "./BookCard";
+import BookCardContainer from "./BookCardContainer";
+import BookCardSkelleton from "./BookCardSkelleton";
 
 const dogs = [
   { image: dog1, name: "Chiwinki" },
@@ -43,8 +38,8 @@ function getRandomDog(): { image: string; name: string } {
   return dogs[randomIndex];
 }
 
-const BookGrid = ({ bookQuery }: Props) => {
-  const { data, error, isLoading } = useBooks(bookQuery);
+const BookGrid = () => {
+  const { data, error, isLoading } = useBooks();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   const randomDog = getRandomDog();

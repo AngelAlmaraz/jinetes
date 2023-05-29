@@ -1,22 +1,12 @@
-import { Flex, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import { Flex, Grid, GridItem, Show } from "@chakra-ui/react";
 import "./App.css";
-import NavBar from "./components/NavBar";
 import BookGrid from "./components/BookGrid";
-import GenreList from "./components/GenreList";
-import { useState } from "react";
-import { Genre } from "./hooks/useGenres";
-import SortSelector from "./components/SortSelector";
 import BookHeading from "./components/BookHeading";
-
-export interface BookQuery {
-  genre: Genre | null;
-  sortOrder: string;
-  searchText: string;
-}
+import GenreList from "./components/GenreList";
+import NavBar from "./components/NavBar";
+import SortSelector from "./components/SortSelector";
 
 function App() {
-  const [bookQuery, setBookQuery] = useState<BookQuery>({} as BookQuery);
-
   return (
     <>
       <Grid
@@ -30,31 +20,19 @@ function App() {
         }}
       >
         <GridItem area="nav">
-          <NavBar
-            onSearch={(searchText) =>
-              setBookQuery({ ...bookQuery, searchText })
-            }
-          />
+          <NavBar />
         </GridItem>
         <Show above="lg">
           <GridItem area="aside" paddingX={5} paddingY={5}>
-            <GenreList
-              selectedGenre={bookQuery.genre}
-              onSelectGenre={(genre) => setBookQuery({ ...bookQuery, genre })}
-            />
+            <GenreList />
           </GridItem>
         </Show>
         <GridItem paddingY={5} area="main">
-          <BookHeading bookQuery={bookQuery} />
+          <BookHeading />
           <Flex paddingLeft={10}>
-            <SortSelector
-              sortOrder={bookQuery.sortOrder}
-              onSelectSortOrder={(sortOrder) =>
-                setBookQuery({ ...bookQuery, sortOrder })
-              }
-            />
+            <SortSelector />
           </Flex>
-          <BookGrid bookQuery={bookQuery} />
+          <BookGrid />
         </GridItem>
       </Grid>
     </>

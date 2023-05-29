@@ -5,11 +5,7 @@ import ColorModeSwitch from "./ColorModeSwitch";
 import { useState } from "react";
 import SearchInput from "./SearchInput";
 
-interface Props {
-  onSearch: (searchText: string) => void;
-}
-
-const NavBar = ({ onSearch }: Props) => {
+const NavBar = () => {
   const [themeDark, setThemeDark] = useState(true);
 
   const toggleTheme = () => {
@@ -23,7 +19,7 @@ const NavBar = ({ onSearch }: Props) => {
           src={themeDark === true ? logoDark : logoLight}
           boxSize="60px"
         ></Image>
-        <SearchInput onSearch={onSearch} />
+        <SearchInput />
         <ColorModeSwitch onToggleSwitch={toggleTheme} />
       </HStack>
     </>

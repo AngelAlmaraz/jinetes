@@ -1,20 +1,11 @@
-import {
-  Button,
-  Heading,
-  List,
-  ListItem,
-  Spinner,
-  Text,
-} from "@chakra-ui/react";
-import useGenres, { Genre } from "../hooks/useGenres";
+import { Button, Heading, List, ListItem, Spinner } from "@chakra-ui/react";
+import useGenres from "../hooks/useGenres";
+import useBookQueryStore from "../store";
 
-interface Props {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
-}
-
-const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
+const GenreList = () => {
   const { data, isLoading, error } = useGenres();
+  const selectedGenre = useBookQueryStore((s) => s.bookQuery.genre);
+  const setSelectedGenre = useBookQueryStore((s) => s.setGenre);
 
   if (error) return <></>;
   if (isLoading) return <Spinner />;
@@ -28,7 +19,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
           <ListItem key={Math.random()} paddingY={5}>
             <Button
               onClick={() => {
-                selectedGenre != genre ? onSelectGenre(genre) : null;
+                selectedGenre != genre ? setSelectedGenre(genre) : null;
               }}
               whiteSpace="normal"
               textAlign="left"

@@ -1,12 +1,10 @@
 import { Heading } from "@chakra-ui/react";
-import { BookQuery } from "../App";
+import useBookQueryStore from "../store";
 
-interface Props {
-  bookQuery: BookQuery;
-}
+const BookHeading = () => {
+  const genre = useBookQueryStore((s) => s.bookQuery.genre);
 
-const BookHeading = ({ bookQuery }: Props) => {
-  const heading = ` ${bookQuery.genre?.name || ""} Books`;
+  const heading = ` ${genre?.name || ""} Books`;
 
   return (
     <Heading as="h1" marginX={10} marginY={5}>

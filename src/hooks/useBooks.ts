@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { BookQuery } from "../App";
-import APIClient,{ FetchResponse } from "../services/api-client"; 
+import APIClient, { FetchResponse } from "../services/api-client";
+import useBookQueryStore from "../store";
 
 const apiClient = new APIClient<Book>('/books2')
 
@@ -13,8 +13,9 @@ export interface Book {
   }
   
 
-const useBooks = (bookQuery: BookQuery) => 
-  useQuery<FetchResponse<Book>, Error>({
+const useBooks = () => {
+  const bookQuery =useBookQueryStore(s => s.bookQuery);
+  return useQuery<FetchResponse<Book>, Error>({
     queryKey: ['books', bookQuery],
     staleTime: 5 * 60 * 1000, // 5m
     queryFn: () => apiClient.getAll({
@@ -25,5 +26,7 @@ const useBooks = (bookQuery: BookQuery) =>
       },
     })
   })
+}
+
 
 export default useBooks;
