@@ -1,4 +1,3 @@
-import React from "react";
 import { Book } from "../hooks/useBooks";
 import {
   Badge,
@@ -10,6 +9,7 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 interface Props {
   book: Book;
@@ -40,7 +40,9 @@ const BookCard = ({ book }: Props) => {
           />
         </div>
         <CardBody>
-          <Heading fontSize="xl">{book.name.substring(0, 35)}</Heading>
+          <Heading fontSize="xl">
+            <Link to={"/books/" + book.id}>{book.name.substring(0, 35)}</Link>
+          </Heading>
         </CardBody>
         <CardFooter paddingTop={0}>
           <HStack flex="1" justifyContent="space-between">

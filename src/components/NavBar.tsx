@@ -4,6 +4,7 @@ import logoLight from "../assets/black.webp";
 import ColorModeSwitch from "./ColorModeSwitch";
 import { useState } from "react";
 import SearchInput from "./SearchInput";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [themeDark, setThemeDark] = useState(true);
@@ -15,10 +16,12 @@ const NavBar = () => {
   return (
     <>
       <HStack padding="10px">
-        <Image
-          src={themeDark === true ? logoDark : logoLight}
-          boxSize="60px"
-        ></Image>
+        <Link to={"/"}>
+          <Image
+            src={themeDark === true ? logoDark : logoLight}
+            boxSize="60px"
+          ></Image>
+        </Link>
         <SearchInput />
         <ColorModeSwitch onToggleSwitch={toggleTheme} />
       </HStack>
