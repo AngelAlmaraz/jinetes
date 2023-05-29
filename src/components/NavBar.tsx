@@ -1,16 +1,15 @@
-import { HStack, Image, Box } from "@chakra-ui/react";
-import logoDark from "../assets/white.webp";
+import { Box, Button, HStack, Image } from "@chakra-ui/react";
+import { useState } from "react";
+import { BsCartFill } from "react-icons/bs";
+import { Link, useNavigate } from "react-router-dom";
 import logoLight from "../assets/black.webp";
 import userDark from "../assets/userDark.webp";
 import userLight from "../assets/userLight.webp";
-import kartLight from "../assets/carritoLight.webp";
-import kartDark from "../assets/carritoDark.webp";
-import ColorModeSwitch from "./ColorModeSwitch";
-import { useState } from "react";
-import SearchInput from "./SearchInput";
-import { Link, useNavigate } from "react-router-dom";
+import logoDark from "../assets/white.webp";
 import { getUser, resetUserSession } from "../services/auth";
 import useBookQueryStore from "../store";
+import ColorModeSwitch from "./ColorModeSwitch";
+import SearchInput from "./SearchInput";
 
 const NavBar = () => {
   const [themeDark, setThemeDark] = useState(true);
@@ -48,10 +47,11 @@ const NavBar = () => {
   return (
     <>
       <HStack padding="10px">
-        <Link to={"/"}>
+        <Link to="/">
           <Image
             src={themeDark === true ? logoDark : logoLight}
             boxSize="60px"
+            objectFit="cover"
             onClick={() => {
               setSelectedGenre(null);
               setSearchText("");
@@ -60,15 +60,13 @@ const NavBar = () => {
         </Link>
         <SearchInput />
         {user && (
-          <Image
-            src={themeDark === true ? kartDark : kartLight}
-            boxSize="60px"
-            onClick={kartHandler}
-          ></Image>
+          <Button variant="link">
+            <BsCartFill size={35} onClick={kartHandler} />
+          </Button>
         )}
         <Image
           src={themeDark === true ? userDark : userLight}
-          boxSize="50px"
+          boxSize="40px"
           onClick={handleUserClick}
         ></Image>
         <ColorModeSwitch onToggleSwitch={toggleTheme} />
