@@ -13,6 +13,7 @@ import { BiDownArrow, BiUpArrow } from "react-icons/bi";
 import { Book } from "../hooks/useBooks";
 import { getUser } from "../services/auth";
 import axios from "axios";
+import { useState } from "react";
 
 const user = getUser();
 
@@ -37,12 +38,16 @@ const fetchCartData = async (email: string) => {
   }
 };
 
-const kart = await fetchCartData(user.email);
+let kart: Book[] = [];
+if (user) {
+  kart = await fetchCartData(user.email);
+}
 
 const Cart = () => {
+  if (!user) return <>Error</>;
+
   console.log(kart);
 
-  if (!user) return <>Error</>;
   return (
     <>
       <Box marginX={20}>
