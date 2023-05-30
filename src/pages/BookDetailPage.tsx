@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useBook from "../hooks/useBook";
 import {
   Button,
@@ -40,11 +40,13 @@ const fetchData = (id: string, email: string) => {
 const BookDetailPage = () => {
   const { id } = useParams();
   const { data: book, isLoading, error } = useBook(id!);
-  console.log("book->", typeof book?.id);
-  const user = getUser();
   const [hasClicked, setHasClicked] = useState(false);
+  const navigate = useNavigate();
+
+  const user = getUser();
 
   const handleClick = (book: Book) => {
+    if (!user) navigate("/signin");
     if (!hasClicked) {
       setHasClicked(true);
       fetchData(book.id, user.email);
