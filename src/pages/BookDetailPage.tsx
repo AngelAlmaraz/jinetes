@@ -4,6 +4,7 @@ import {
   Button,
   Grid,
   GridItem,
+  HStack,
   Heading,
   Image,
   Show,
@@ -12,6 +13,9 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { getUser } from "../services/auth";
+import { useState } from "react";
+import { Book } from "../hooks/useBooks";
+import { BsCartCheck } from "react-icons/bs";
 
 const fetchData = (id: string, email: string) => {
   try {
@@ -38,6 +42,14 @@ const BookDetailPage = () => {
   const { data: book, isLoading, error } = useBook(id!);
   console.log("book->", typeof book?.id);
   const user = getUser();
+  const [hasClicked, setHasClicked] = useState(false);
+
+  const handleClick = (book: Book) => {
+    if (!hasClicked) {
+      setHasClicked(true);
+      fetchData(book.id, user.email);
+    }
+  };
 
   if (isLoading) return <Spinner />;
 
@@ -81,9 +93,19 @@ const BookDetailPage = () => {
             ${book.price - 1}.99
           </Heading>
           <Text paddingTop={5}>{book.description}</Text>
-          <Button onClick={() => fetchData(book.id, user.email)} marginTop={10}>
-            Add to cart
-          </Button>
+          {!hasClicked && (
+            <Button onClick={() => handleClick(book)} marginTop={10}>
+              Add to cart
+            </Button>
+          )}
+          {hasClicked && (
+            <Button marginTop={10}>
+              <HStack>
+                <Text>Added to kart!</Text>
+                <BsCartCheck size={20} />
+              </HStack>
+            </Button>
+          )}
         </GridItem>
       </Grid>
     </>
