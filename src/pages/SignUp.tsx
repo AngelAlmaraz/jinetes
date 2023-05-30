@@ -11,7 +11,7 @@ interface SignUpFormState {
     username: string;
     email: string;
     password: string;
-
+    confirmedPassword:string
 
 }
 
@@ -22,6 +22,7 @@ const SignUp: React.FC = () => {
         username:'',
         email: '',
         password: '',
+        confirmedPassword:''
     });
     const [message,setMessage] = useState('')
 
@@ -37,6 +38,10 @@ const SignUp: React.FC = () => {
         event.preventDefault();
         if (formState.username.trim()==='' || formState.email.trim()=== '' || formState.password.trim() === ''){
             setMessage('All fields are required');
+            return;
+        }
+        if (formState.password.trim() !== formState.confirmedPassword.trim()){
+            setMessage('Passwords do not match');
             return;
         }
         setMessage('');
@@ -62,7 +67,6 @@ const SignUp: React.FC = () => {
             }
 
         })
-        //console.log(formState)
 
 
     };
@@ -75,7 +79,7 @@ const SignUp: React.FC = () => {
                     Create an account to be able to buy books
                 </h3>
                 <form onSubmit={handleSubmit}>
-                    <div style={{marginTop: '10%', width:"100%" }}>
+                    <div style={{marginTop: '5%', width:"100%" }}>
                         <div style={{marginTop:"2%"}}>
                             <label style={{marginLeft:"15%", fontSize: '1.5vw'}}>Username</label>
                         </div>
@@ -109,6 +113,18 @@ const SignUp: React.FC = () => {
                                 type="password"
                                 name="password"
                                 value={formState.password}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div style={{marginTop:"2%"}}>
+                            <label style={{marginLeft:"15%", fontSize: '1.5vw'}}>Confirm Password</label>
+                        </div>
+                        <div style={{ textAlign: 'center', marginTop: '1%' }}>
+                            <input
+                                style={{  borderRadius: '5px', background: 'white', width: '70%', height: '30px',color:"black",fontSize:"15px" }}
+                                type="password"
+                                name="confirmedPassword"
+                                value={formState.confirmedPassword}
                                 onChange={handleInputChange}
                             />
                         </div>
