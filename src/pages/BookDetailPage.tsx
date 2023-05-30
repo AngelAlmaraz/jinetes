@@ -17,7 +17,7 @@ import { useState } from "react";
 import { Book } from "../hooks/useBooks";
 import { BsCartCheck } from "react-icons/bs";
 
-const fetchData = (id: string, email: string) => {
+const fetchData = async (id: string, email: string) => {
   try {
     const response = axios.get(
       "https://4nxi7wtmf2.execute-api.us-east-1.amazonaws.com/dev/cart",
