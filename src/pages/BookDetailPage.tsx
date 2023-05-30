@@ -10,11 +10,34 @@ import {
   Spinner,
   Text,
 } from "@chakra-ui/react";
+import axios from "axios";
+import { getUser } from "../services/auth";
+
+const fetchData = (id: string, email: string) => {
+  try {
+    const response = axios.get(
+      "https://4nxi7wtmf2.execute-api.us-east-1.amazonaws.com/dev/cart",
+      {
+        params: {
+          id: id,
+          email: email,
+        },
+      }
+    );
+
+    console.log(response);
+    // Handle the response data as needed
+  } catch (error) {
+    console.error(error);
+    // Handle any error that occurs during the request
+  }
+};
 
 const BookDetailPage = () => {
   const { id } = useParams();
   const { data: book, isLoading, error } = useBook(id!);
-  console.log("book->", book);
+  console.log("book->", typeof book?.id);
+  const user = getUser();
 
   if (isLoading) return <Spinner />;
 
@@ -52,7 +75,9 @@ const BookDetailPage = () => {
         <GridItem area="main" paddingTop={5} paddingX={5}>
           <Heading>{book.name}</Heading>
           <Text paddingTop={10}>{book.description}</Text>
-          <Button marginTop={10}>Add to cart</Button>
+          <Button onClick={() => fetchData(book.id, user.email)} marginTop={10}>
+            Add to cart
+          </Button>
         </GridItem>
       </Grid>
     </>

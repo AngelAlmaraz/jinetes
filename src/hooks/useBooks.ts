@@ -5,7 +5,7 @@ import useBookQueryStore from "../store";
 const apiClient = new APIClient<Book>('/books2')
 
 export interface Book {
-    id: number;
+    id: string;
     name: string;
     url: string
     author:string
