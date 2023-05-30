@@ -11,6 +11,7 @@ export interface Book {
     author:string
     price: number
     description:string
+    quantity: number
   }
   
 

@@ -10,6 +10,8 @@ import {
 } from "@chakra-ui/react";
 import { getUser } from "../services/auth";
 import { Key } from "react";
+import { BiUpArrow, BiDownArrow } from "react-icons/bi";
+import { AiOutlineCreditCard } from "react-icons/ai";
 import { Book } from "../hooks/useBooks";
 
 const Cart = () => {
@@ -31,8 +33,19 @@ const Cart = () => {
                     src={book.url}
                     width="10%"
                   />
+                  <VStack paddingX={5}>
+                    <Button>
+                      <BiUpArrow size={20} />
+                    </Button>
+                    <Text>{book.quantity}</Text>
+                    <Button>
+                      <BiDownArrow size={20} />
+                    </Button>
+                  </VStack>
                   <VStack>
-                    <Heading fontSize="2xl">{book.name}</Heading>
+                    <Heading justifyContent="flex-start" fontSize="2xl">
+                      {book.name}
+                    </Heading>
                     <Text>{book.description}</Text>
                   </VStack>
                 </HStack>
@@ -41,7 +54,12 @@ const Cart = () => {
           </>
         ))}
         <HStack justify="flex-end" paddingX={10}>
-          <Button>Proceed to payment</Button>
+          <Button>
+            <HStack>
+              <Text>Proceed to payment</Text>
+              <AiOutlineCreditCard size={20} />
+            </HStack>
+          </Button>
         </HStack>
       </Box>
     </>

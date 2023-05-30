@@ -74,7 +74,13 @@ const BookDetailPage = () => {
         </Show>
         <GridItem area="main" paddingTop={5} paddingX={5}>
           <Heading>{book.name}</Heading>
-          <Text paddingTop={10}>{book.description}</Text>
+          <Text fontSize="2xl" paddingTop={2}>
+            By: {book.author}
+          </Text>
+          <Heading fontSize="2xl" paddingY={5}>
+            ${book.price - 1}.99
+          </Heading>
+          <Text paddingTop={5}>{book.description}</Text>
           <Button onClick={() => fetchData(book.id, user.email)} marginTop={10}>
             Add to cart
           </Button>
