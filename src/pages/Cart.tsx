@@ -16,10 +16,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Cart = () => {
-  const user = getUser();
-  const [kart, setKart] = useState<Book[]>([]);
-
   useEffect(() => {
+    const user = getUser();
+    const [kart, setKart] = useState<Book[]>([]);
     const fetchCartData = async (email: string) => {
       try {
         const response = await axios.get(
