@@ -37,11 +37,7 @@ const NavBar = () => {
     resetUserSession();
   };
   const kartHandler = () => {
-    if (user) {
-      console.log("/kart");
-    } else {
-      navigate("/signin");
-    }
+    navigate("/cart");
   };
   return (
     <>

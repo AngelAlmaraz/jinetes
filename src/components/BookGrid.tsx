@@ -43,6 +43,7 @@ const BookGrid = () => {
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   const randomDog = getRandomDog();
+  console.log("Books->", data?.results);
 
   return (
     <>
