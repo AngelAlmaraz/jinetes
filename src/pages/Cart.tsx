@@ -8,13 +8,14 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { getUser } from "../services/auth";
+import { getUser, reloadUserSession } from "../services/auth";
 import { Key } from "react";
 import { BiUpArrow, BiDownArrow } from "react-icons/bi";
 import { AiOutlineCreditCard } from "react-icons/ai";
 import { Book } from "../hooks/useBooks";
 
 const Cart = () => {
+  reloadUserSession();
   const user = getUser();
   console.log("kart->", user.kart);
 
