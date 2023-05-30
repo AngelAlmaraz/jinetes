@@ -60,12 +60,12 @@ const NavBar = () => {
         <SearchInput />
         {user && (
           <Button variant="link">
-            <BsCartFill size={35} onClick={kartHandler} />
+            <BsCartFill size={31} onClick={kartHandler} />
           </Button>
         )}
 
         <Button variant="link">
-          <FaUserAlt size={30} onClick={handleUserClick} />
+          <FaUserAlt size={28} onClick={handleUserClick} />
         </Button>
 
         <ColorModeSwitch onToggleSwitch={toggleTheme} />
