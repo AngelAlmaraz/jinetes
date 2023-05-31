@@ -5,8 +5,6 @@ import dog5 from "../assets/loki.webp";
 import dog8 from "../assets/lulu.webp";
 import dog9 from "../assets/luna.webp";
 import dog2 from "../assets/manena.webp";
-import dog11 from "../assets/moroyorqui.webp";
-import dog13 from "../assets/osunauzer.webp";
 import dog7 from "../assets/paka.webp";
 import dog4 from "../assets/peka.webp";
 import dog3 from "../assets/rocky.webp";
@@ -28,9 +26,7 @@ const dogs = [
   { image: dog8, name: "Lulu" },
   { image: dog9, name: "Luna" },
   { image: dog10, name: "Tiki" },
-  { image: dog11, name: "Moroyorkie" },
   { image: dog12, name: "Chiwinki" },
-  { image: dog13, name: "Osunauzer" },
 ];
 
 function getRandomDog(): { image: string; name: string } {
